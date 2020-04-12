@@ -10,11 +10,9 @@ const Bookshelf = props => {
         <h2 className="bookshelf-title">{shelf.title}</h2>
         <div className="bookshelf-books">
           <ol className="books-grid">
-            {books
-              .filter(book => book.shelf === shelf.name)
-              .map(book => (
-                <Book key={book.id} data={book} />
-              ))}
+            {books.map(book => (
+              <Book key={book.id} data={book} />
+            ))}
           </ol>
         </div>
       </div>

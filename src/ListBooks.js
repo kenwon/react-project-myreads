@@ -11,7 +11,11 @@ const ListBooks = props => {
       </div>
       <div className="list-books-content">
         {shelves.map(shelf => (
-          <Bookshelf key={shelf.name} shelf={shelf} books={books} />
+          <Bookshelf
+            key={shelf.name}
+            shelf={shelf}
+            books={books.filter(book => book.shelf === shelf.name)}
+          />
         ))}
       </div>
       <div className="open-search">
