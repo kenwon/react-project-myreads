@@ -10,13 +10,3 @@ test('<BooksApp /> renders page header', () => {
 
   expect(title).toBeInTheDocument()
 })
-
-test('<BooksApp /> renders bookshelves', () => {
-  const { getByText } = render(<BooksApp />)
-
-  expect(
-    getByText(/currently reading/i, { selector: 'h2' })
-  ).toBeInTheDocument()
-  expect(getByText(/want to read/i, { selector: 'h2' })).toBeInTheDocument()
-  expect(getByText(/finished/i, { selector: 'h2' })).toBeInTheDocument()
-})
