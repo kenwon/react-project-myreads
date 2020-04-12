@@ -1,5 +1,5 @@
 import React from 'react'
-// import * as BooksAPI from './BooksAPI'
+import * as BooksAPI from './BooksAPI'
 import './App.css'
 import SearchPage from './SearchPage'
 
@@ -12,10 +12,24 @@ class BooksApp extends React.Component {
      * pages, as well as provide a good URL they can bookmark and share.
      */
     showSearchPage: false,
+    books: [],
+    shelves: [
+      { name: 'currentlyReading', title: 'Currently Reading' },
+      { name: 'wantToRead', title: 'Want to Read' },
+      { name: 'read', title: 'Finished' },
+    ],
   }
 
   onCloseSearch = () => {
     this.setState(() => ({ showSearchPage: false }))
+  }
+
+  componentDidMount() {
+    BooksAPI.getAll().then(books =>
+      this.setState(() => ({
+        books: books,
+      }))
+    )
   }
 
   render() {
