@@ -18,11 +18,29 @@ class BooksApp extends React.Component {
       { value: 'currentlyReading', label: 'Currently Reading' },
       { value: 'wantToRead', label: 'Want to Read' },
       { value: 'read', label: 'Finished' },
+      { value: 'none', label: 'None' },
     ],
   }
 
+  onOpenSearch = () => this.setState({ showSearchPage: true })
+
   onCloseSearch = () => {
     this.setState(() => ({ showSearchPage: false }))
+  }
+
+  onMenuSubmitHandler = (event, book) => {
+    event.persist()
+    event.preventDefault()
+
+    const shelf = event.target.value
+
+    this.setState(currentState => ({
+      books: currentState.books.map(item =>
+        item.id === book.id ? { ...item, shelf: shelf } : item
+      ),
+    }))
+
+    BooksAPI.update(book, shelf)
   }
 
   componentDidMount() {
@@ -39,7 +57,12 @@ class BooksApp extends React.Component {
         {this.state.showSearchPage ? (
           <SearchPage onCloseSearch={this.onCloseSearch} />
         ) : (
-          <ListBooks shelves={this.state.shelves} books={this.state.books} />
+          <ListBooks
+            books={this.state.books}
+            shelves={this.state.shelves}
+            onMenuSubmitHandler={this.onMenuSubmitHandler}
+            onOpenSearch={this.onOpenSearch}
+          />
         )}
       </div>
     )

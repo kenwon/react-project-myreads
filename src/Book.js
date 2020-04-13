@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import BookActionMenu from './BookActionMenu'
 
 const Book = props => {
-  const data = props.data
+  const { data, shelves, onMenuSubmitHandler } = props
   return (
     <li>
       <div className="book">
@@ -17,7 +17,11 @@ const Book = props => {
             }}
             data-testid="book-cover"
           ></div>
-          <BookActionMenu />
+          <BookActionMenu
+            book={data}
+            shelves={shelves}
+            onSubmitHandler={onMenuSubmitHandler}
+          />
         </div>
         <div className="book-title">{data.title}</div>
         {data.authors.map(author => (
@@ -32,5 +36,7 @@ const Book = props => {
 
 Book.propTypes = {
   data: PropTypes.object.isRequired,
+  shelves: PropTypes.arrayOf(Object).isRequired,
+  onMenuSubmitHandler: PropTypes.func.isRequired,
 }
 export default Book

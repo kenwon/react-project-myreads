@@ -3,7 +3,7 @@ import Bookshelf from './Bookshelf'
 import PropTypes from 'prop-types'
 
 const ListBooks = props => {
-  const { shelves, books } = props
+  const { shelves, books, onMenuSubmitHandler, onOpenSearch } = props
   return (
     <div className="list-books">
       <div className="list-books-title">
@@ -15,14 +15,13 @@ const ListBooks = props => {
             key={shelf.value}
             shelf={shelf}
             books={books.filter(book => book.shelf === shelf.value)}
+            shelves={shelves}
             onMenuSubmitHandler={onMenuSubmitHandler}
           />
         ))}
       </div>
       <div className="open-search">
-        <button onClick={() => this.setState({ showSearchPage: true })}>
-          Add a book
-        </button>
+        <button onClick={onOpenSearch}>Add a book</button>
       </div>
     </div>
   )
@@ -31,6 +30,8 @@ const ListBooks = props => {
 ListBooks.propTypes = {
   shelves: PropTypes.arrayOf(Object).isRequired,
   books: PropTypes.arrayOf(Object).isRequired,
+  onMenuSubmitHandler: PropTypes.func.isRequired,
+  onOpenSearch: PropTypes.func.isRequired,
 }
 
 export default ListBooks

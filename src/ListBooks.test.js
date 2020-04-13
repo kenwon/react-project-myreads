@@ -12,15 +12,20 @@ const renderComponent = () =>
       books={books}
       shelves={shelves}
       onMenuSubmitHandler={jest.fn()}
+      onOpenSearch={jest.fn()}
     />
   )
 
 test('<ListBooks /> renders bookshelves', () => {
   const { getByText } = renderComponent()
 
-  expect(
-    getByText(/currently reading/i, { selector: 'h2' })
-  ).toBeInTheDocument()
-  expect(getByText(/want to read/i, { selector: 'h2' })).toBeInTheDocument()
-  expect(getByText(/finished/i, { selector: 'h2' })).toBeInTheDocument()
+  shelves.map(shelf =>
+    expect(getByText(shelf.label, { selector: 'h2' })).toBeInTheDocument()
+  )
+})
+
+it('renders open search page button', () => {
+  const { getByText } = renderComponent()
+
+  expect(getByText(/add a book/i)).toBeInTheDocument()
 })
