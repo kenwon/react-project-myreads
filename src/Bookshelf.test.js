@@ -13,7 +13,7 @@ const renderComponent = ({ shelf }) =>
       shelf={shelf}
       books={books}
       shelves={shelves}
-      onMenuSubmitHandler={jest.fn()}
+      onMenuChangeHandler={jest.fn()}
     />
   )
 

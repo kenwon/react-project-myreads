@@ -3,7 +3,7 @@ import Bookshelf from './Bookshelf'
 import PropTypes from 'prop-types'
 
 const ListBooks = props => {
-  const { shelves, books, onMenuSubmitHandler, onOpenSearch } = props
+  const { shelves, books, onMenuChangeHandler, onOpenSearch } = props
   return (
     <div className="list-books">
       <div className="list-books-title">
@@ -16,7 +16,7 @@ const ListBooks = props => {
             shelf={shelf}
             books={books.filter(book => book.shelf === shelf.value)}
             shelves={shelves}
-            onMenuSubmitHandler={onMenuSubmitHandler}
+            onMenuChangeHandler={onMenuChangeHandler}
           />
         ))}
       </div>
@@ -30,7 +30,7 @@ const ListBooks = props => {
 ListBooks.propTypes = {
   shelves: PropTypes.arrayOf(Object).isRequired,
   books: PropTypes.arrayOf(Object).isRequired,
-  onMenuSubmitHandler: PropTypes.func.isRequired,
+  onMenuChangeHandler: PropTypes.func.isRequired,
   onOpenSearch: PropTypes.func.isRequired,
 }
 

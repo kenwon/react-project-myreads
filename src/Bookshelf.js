@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Book from './Book'
 
 const Bookshelf = props => {
-  const { shelf, books, shelves, onMenuSubmitHandler } = props
+  const { shelf, books, shelves, onMenuChangeHandler } = props
   return (
     <div>
       <div className="bookshelf">
@@ -15,7 +15,7 @@ const Bookshelf = props => {
                 key={book.id}
                 data={book}
                 shelves={shelves}
-                onMenuSubmitHandler={onMenuSubmitHandler}
+                onMenuChangeHandler={onMenuChangeHandler}
               />
             ))}
           </ol>
@@ -29,7 +29,7 @@ Bookshelf.propTypes = {
   shelf: PropTypes.object.isRequired,
   books: PropTypes.arrayOf(Object).isRequired,
   shelves: PropTypes.arrayOf(Object).isRequired,
-  onMenuSubmitHandler: PropTypes.func.isRequired,
+  onMenuChangeHandler: PropTypes.func.isRequired,
 }
 
 export default Bookshelf

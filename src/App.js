@@ -28,7 +28,7 @@ class BooksApp extends React.Component {
     this.setState(() => ({ showSearchPage: false }))
   }
 
-  onMenuSubmitHandler = (event, book) => {
+  onMenuChangeHandler = (event, book) => {
     event.persist()
     event.preventDefault()
 
@@ -60,7 +60,7 @@ class BooksApp extends React.Component {
           <ListBooks
             books={this.state.books}
             shelves={this.state.shelves}
-            onMenuSubmitHandler={this.onMenuSubmitHandler}
+            onMenuChangeHandler={this.onMenuChangeHandler}
             onOpenSearch={this.onOpenSearch}
           />
         )}

@@ -8,7 +8,7 @@ afterEach(cleanup)
 
 const book = books[1]
 const renderComponent = () =>
-  render(<Book data={book} shelves={shelves} onMenuSubmitHandler={jest.fn()} />)
+  render(<Book data={book} shelves={shelves} onMenuChangeHandler={jest.fn()} />)
 
 test('<Book /> renders a book', () => {
   const { getByText, getByTestId } = renderComponent()

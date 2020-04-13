@@ -11,7 +11,7 @@ const renderComponent = () =>
     <ListBooks
       books={books}
       shelves={shelves}
-      onMenuSubmitHandler={jest.fn()}
+      onMenuChangeHandler={jest.fn()}
       onOpenSearch={jest.fn()}
     />
   )

@@ -2,15 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const BookActionMenu = props => {
-  const { book, shelves, onSubmitHandler } = props
+  const { book, shelves, onChangeHandler } = props
   return (
     <div className="book-shelf-changer">
-      <form onSubmit={onSubmitHandler} data-testid={`${book.id}-action-form`}>
+      <form data-testid={`${book.id}-action-form`}>
         <select
           name="menu"
           id="menu"
           value={book.shelf ? book.shelf : 'none'}
-          onChange={event => onSubmitHandler(event, book)}
+          onChange={event => onChangeHandler(event, book)}
           data-testid={`${book.id}-action-menu`}
         >
           <option value="move" disabled>
@@ -30,7 +30,7 @@ const BookActionMenu = props => {
 BookActionMenu.propTypes = {
   book: PropTypes.object.isRequired,
   shelves: PropTypes.arrayOf(Object).isRequired,
-  onSubmitHandler: PropTypes.func.isRequired,
+  onChangeHandler: PropTypes.func.isRequired,
 }
 
 export default BookActionMenu
