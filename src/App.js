@@ -15,9 +15,9 @@ class BooksApp extends React.Component {
     showSearchPage: false,
     books: [],
     shelves: [
-      { name: 'currentlyReading', title: 'Currently Reading' },
-      { name: 'wantToRead', title: 'Want to Read' },
-      { name: 'read', title: 'Finished' },
+      { value: 'currentlyReading', label: 'Currently Reading' },
+      { value: 'wantToRead', label: 'Want to Read' },
+      { value: 'read', label: 'Finished' },
     ],
   }
 

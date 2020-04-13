@@ -6,9 +6,9 @@ import books from './test/data/books-data.json'
 afterEach(cleanup)
 
 const shelves = [
-  { name: 'currentlyReading', title: 'Currently Reading' },
-  { name: 'wantToRead', title: 'Want to Read' },
-  { name: 'read', title: 'Finished' },
+  { value: 'currentlyReading', label: 'Currently Reading' },
+  { value: 'wantToRead', label: 'Want to Read' },
+  { value: 'read', label: 'Finished' },
 ]
 const renderComponent = () =>
   render(<ListBooks shelves={shelves} books={books} />)

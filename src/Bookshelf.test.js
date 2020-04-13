@@ -5,20 +5,20 @@ import books from './test/data/books-data.json'
 
 afterEach(cleanup)
 
-const shelf = { name: 'currentlyReading', title: 'Currently Reading' }
+const shelf = { value: 'currentlyReading', label: 'Currently Reading' }
 const renderComponent = ({ shelf }) =>
   render(<Bookshelf shelf={shelf} books={books} />)
 
 test('<Bookshelf /> renders a bookshelf', () => {
   const { getByText } = renderComponent({ shelf })
 
-  expect(getByText(shelf.title, { selector: 'h2' })).toBeInTheDocument()
+  expect(getByText(shelf.label, { selector: 'h2' })).toBeInTheDocument()
 })
 
 it('renders books belonging to shelf', () => {
   const { getByText } = renderComponent({ shelf })
 
   books
-    .filter(book => book.shelf === shelf.name)
+    .filter(book => book.shelf === shelf.value)
     .map(book => expect(getByText(book.title)).toBeInTheDocument)
 })

@@ -12,9 +12,10 @@ const ListBooks = props => {
       <div className="list-books-content">
         {shelves.map(shelf => (
           <Bookshelf
-            key={shelf.name}
+            key={shelf.value}
             shelf={shelf}
-            books={books.filter(book => book.shelf === shelf.name)}
+            books={books.filter(book => book.shelf === shelf.value)}
+            onMenuSubmitHandler={onMenuSubmitHandler}
           />
         ))}
       </div>
