@@ -1,0 +1,6 @@
+[
+  { "value": "currentlyReading", "label": "Currently Reading" },
+  { "value": "wantToRead", "label": "Want to Read" },
+  { "value": "read", "label": "Finished" },
+  { "value": "none", "label": "None" }
+]

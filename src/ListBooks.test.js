@@ -2,16 +2,18 @@ import React from 'react'
 import { cleanup, render } from '@testing-library/react'
 import ListBooks from './ListBooks'
 import books from './test/data/books-data.json'
+import shelves from './test/data/shelves-data.json'
 
 afterEach(cleanup)
 
-const shelves = [
-  { value: 'currentlyReading', label: 'Currently Reading' },
-  { value: 'wantToRead', label: 'Want to Read' },
-  { value: 'read', label: 'Finished' },
-]
 const renderComponent = () =>
-  render(<ListBooks shelves={shelves} books={books} />)
+  render(
+    <ListBooks
+      books={books}
+      shelves={shelves}
+      onMenuSubmitHandler={jest.fn()}
+    />
+  )
 
 test('<ListBooks /> renders bookshelves', () => {
   const { getByText } = renderComponent()

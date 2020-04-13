@@ -2,12 +2,20 @@ import React from 'react'
 import { cleanup, render } from '@testing-library/react'
 import Bookshelf from './Bookshelf'
 import books from './test/data/books-data.json'
+import shelves from './test/data/shelves-data.json'
 
 afterEach(cleanup)
 
 const shelf = { value: 'currentlyReading', label: 'Currently Reading' }
 const renderComponent = ({ shelf }) =>
-  render(<Bookshelf shelf={shelf} books={books} />)
+  render(
+    <Bookshelf
+      shelf={shelf}
+      books={books}
+      shelves={shelves}
+      onMenuSubmitHandler={jest.fn()}
+    />
+  )
 
 test('<Bookshelf /> renders a bookshelf', () => {
   const { getByText } = renderComponent({ shelf })
