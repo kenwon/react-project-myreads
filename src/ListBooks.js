@@ -1,9 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Bookshelf from './Bookshelf'
 import PropTypes from 'prop-types'
 
 const ListBooks = props => {
-  const { shelves, books, onMenuChangeHandler, onOpenSearch } = props
+  const { shelves, books, onMenuChangeHandler } = props
 
   return (
     <div className="list-books">
@@ -24,7 +25,7 @@ const ListBooks = props => {
           ))}
       </div>
       <div className="open-search">
-        <button onClick={onOpenSearch}>Add a book</button>
+        <Link to="/search">Add a book</Link>
       </div>
     </div>
   )
@@ -34,7 +35,6 @@ ListBooks.propTypes = {
   shelves: PropTypes.arrayOf(Object).isRequired,
   books: PropTypes.arrayOf(Object).isRequired,
   onMenuChangeHandler: PropTypes.func.isRequired,
-  onOpenSearch: PropTypes.func.isRequired,
 }
 
 export default ListBooks

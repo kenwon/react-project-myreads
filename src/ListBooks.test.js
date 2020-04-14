@@ -1,5 +1,6 @@
 import React from 'react'
 import { cleanup, render } from '@testing-library/react'
+import { MemoryRouter } from 'react-router-dom'
 import ListBooks from './ListBooks'
 import books from './test/data/books-data.json'
 import shelves from './test/data/shelves-data.json'
@@ -8,12 +9,14 @@ afterEach(cleanup)
 
 const renderComponent = () =>
   render(
-    <ListBooks
-      books={books}
-      shelves={shelves}
-      onMenuChangeHandler={jest.fn()}
-      onOpenSearch={jest.fn()}
-    />
+    <MemoryRouter>
+      <ListBooks
+        books={books}
+        shelves={shelves}
+        onMenuChangeHandler={jest.fn()}
+        onOpenSearch={jest.fn()}
+      />
+    </MemoryRouter>
   )
 
 test('<ListBooks /> renders bookshelves', () => {
