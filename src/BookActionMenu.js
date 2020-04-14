@@ -8,14 +8,21 @@ const BookActionMenu = props => {
     existingBook && existingBook.shelf ? existingBook.shelf : 'none'
 
   return (
-    <div className="book-shelf-changer">
+    <div
+      className={
+        existingBook
+          ? 'book-shelf-changer book-in-collection'
+          : 'book-shelf-changer'
+      }
+      data-testid={`${book.id}-action-menu`}
+    >
       <form data-testid={`${book.id}-action-form`}>
         <select
           name="menu"
           id="menu"
           value={currentShelf}
           onChange={event => onChangeHandler(event, book)}
-          data-testid={`${book.id}-action-menu`}
+          data-testid={`${book.id}-action-select`}
         >
           <option value="move" disabled>
             {currentShelf === 'none' ? 'Add to...' : 'Move to...'}
