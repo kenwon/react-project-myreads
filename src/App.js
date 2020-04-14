@@ -28,30 +28,42 @@ class BooksApp extends React.Component {
 
   onMenuChangeHandler = (event, book) => {
     event.persist()
-    event.preventDefault()
 
     const shelf = event.target.value
 
     BooksAPI.update(book, shelf).then(this.updateBooks(book, shelf))
-
-    this.redirectToMainPage()
   }
 
   updateBooks = (book, shelf) => {
+    // Add book to `books` if it's not there
     this.setState(currentState => {
-      if (!currentState.books.find(item => item.id === book.id))
-        return {
-          books: currentState.books.concat([book]),
-        }
+      book.shelf = shelf
+      return !currentState.books.find(item => item.id === book.id)
+        ? {
+            books: currentState.books.concat([book]),
+          }
+        : null
     })
 
-    this.setState(currentState => {
-      return {
-        books: currentState.books.map(item =>
-          item.id === book.id ? { ...item, shelf: shelf } : item
-        ),
-      }
-    })
+    // Remove current book if shelf is set to 'none'
+    this.setState(currentState =>
+      shelf === 'none' && currentState.books.find(item => item.id === book.id)
+        ? {
+            books: currentState.books.filter(item => item.id !== book.id),
+          }
+        : null
+    )
+
+    // Keep only shelved books in `books` and update current book's shelf, then
+    // update shelf key for current book in search results.
+    this.setState(currentState => ({
+      books: currentState.books
+        .filter(item => item.shelf !== 'none')
+        .map(item => (item.id === book.id ? { ...item, shelf } : item)),
+      searchResults: currentState.searchResults.map(item =>
+        item.id === book.id ? { ...item, shelf: shelf } : item
+      ),
+    }))
   }
 
   onSearchChangeHandler = event => {
@@ -68,12 +80,6 @@ class BooksApp extends React.Component {
             searchResults: results,
           }))
     })
-  }
-
-  searchReset = () => {
-    this.setState(() => ({
-      query: '',
-    }))
   }
 
   componentDidMount() {
