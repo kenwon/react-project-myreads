@@ -4,6 +4,11 @@ import BookActionMenu from './BookActionMenu'
 
 const Book = props => {
   const { data, shelves, onMenuChangeHandler } = props
+  const image =
+    data.imageLinks && data.imageLinks.thumbnail
+      ? `url(${data.imageLinks.thumbnail})`
+      : null
+
   return (
     <li>
       <div className="book">
@@ -13,7 +18,7 @@ const Book = props => {
             style={{
               width: 128,
               height: 188,
-              backgroundImage: `url(${data.imageLinks.thumbnail})`,
+              backgroundImage: image,
             }}
             data-testid="book-cover"
           ></div>
