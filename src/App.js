@@ -13,6 +13,7 @@ class BooksApp extends React.Component {
      * pages, as well as provide a good URL they can bookmark and share.
      */
     showSearchPage: false,
+    query: '',
     books: [],
     shelves: [
       { value: 'currentlyReading', label: 'Currently Reading' },
@@ -20,11 +21,16 @@ class BooksApp extends React.Component {
       { value: 'read', label: 'Finished' },
       { value: 'none', label: 'None' },
     ],
+    searchResults: [],
   }
 
   onOpenSearch = () => this.setState({ showSearchPage: true })
 
   onCloseSearch = () => {
+    this.redirectToMainPage()
+  }
+
+  redirectToMainPage = () => {
     this.setState(() => ({ showSearchPage: false }))
   }
 
@@ -41,6 +47,35 @@ class BooksApp extends React.Component {
     }))
 
     BooksAPI.update(book, shelf)
+
+    this.redirectToMainPage()
+  }
+
+  onSearchChangeHandler = event => {
+    const query = event.target.value
+
+    this.setState(() => ({ query }))
+  }
+
+  onSearchSubmitHandler = event => {
+    event.persist()
+    event.preventDefault()
+    console.log(event)
+    const query = this.state.query.trim()
+
+    BooksAPI.search(query).then(results => {
+      this.setState(() => ({
+        searchResults: results,
+      }))
+    })
+
+    this.searchReset()
+  }
+
+  searchReset = () => {
+    this.setState(() => ({
+      query: '',
+    }))
   }
 
   componentDidMount() {
@@ -55,7 +90,15 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
         {this.state.showSearchPage ? (
-          <SearchPage onCloseSearch={this.onCloseSearch} />
+          <SearchPage
+            onCloseSearch={this.onCloseSearch}
+            query={this.state.query}
+            onSearchChangeHandler={this.onSearchChangeHandler}
+            onSearchSubmitHandler={this.onSearchSubmitHandler}
+            searchResults={this.state.searchResults}
+            shelves={this.state.shelves}
+            onMenuChangeHandler={this.onMenuChangeHandler}
+          />
         ) : (
           <ListBooks
             books={this.state.books}

@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Book from './Book'
 
 const SearchPage = props => {
   return (
@@ -17,11 +18,29 @@ const SearchPage = props => {
                   However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                   you don't find a specific author or title. Every search is limited by search terms.
                 */}
-          <input type="text" placeholder="Search by title or author" />
+          <form onSubmit={props.onSearchSubmitHandler}>
+            <input
+              type="text"
+              placeholder="Search by title or author"
+              value={props.query}
+              onChange={props.onSearchChangeHandler}
+            />
+          </form>
         </div>
       </div>
       <div className="search-books-results">
-        <ol className="books-grid"></ol>
+        <ol className="books-grid">
+          {props.searchResults
+            ? props.searchResults.map(book => (
+                <Book
+                  key={book.id}
+                  data={book}
+                  shelves={props.shelves}
+                  onMenuChangeHandler={props.onMenuChangeHandler}
+                />
+              ))
+            : ''}
+        </ol>
       </div>
     </div>
   )
@@ -29,6 +48,15 @@ const SearchPage = props => {
 
 SearchPage.propTypes = {
   onCloseSearch: PropTypes.func.isRequired,
+  query: PropTypes.string,
+  onSearchChangeHandler: PropTypes.func.isRequired,
+  onSearchSubmitHandler: PropTypes.func.isRequired,
+  searchResults: PropTypes.oneOfType([
+    PropTypes.arrayOf(Object),
+    PropTypes.object,
+  ]),
+  shelves: PropTypes.arrayOf(Object).isRequired,
+  onMenuChangeHandler: PropTypes.func.isRequired,
 }
 
 export default SearchPage
