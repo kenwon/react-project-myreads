@@ -18,7 +18,7 @@ const SearchPage = props => {
                   However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                   you don't find a specific author or title. Every search is limited by search terms.
                 */}
-          <form onSubmit={props.onSearchSubmitHandler}>
+          <form>
             <input
               type="text"
               placeholder="Search by title or author"
@@ -52,7 +52,6 @@ SearchPage.propTypes = {
   onCloseSearch: PropTypes.func.isRequired,
   query: PropTypes.string,
   onSearchChangeHandler: PropTypes.func.isRequired,
-  onSearchSubmitHandler: PropTypes.func.isRequired,
   searchResults: PropTypes.oneOfType([PropTypes.arrayOf(Object)]),
   shelves: PropTypes.arrayOf(Object).isRequired,
   onMenuChangeHandler: PropTypes.func.isRequired,

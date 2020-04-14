@@ -50,14 +50,6 @@ it('calls "onSearchChangeHandler" prop on search input', () => {
   expect(onSearchChangeHandler).toHaveBeenCalledTimes(1)
 })
 
-it('calls "onSearchSubmitHandler" prop on search submit', () => {
-  const { getByPlaceholderText } = renderComponent(defaultSearchResults)
-  const input = getByPlaceholderText(/Search by title or author/i)
-
-  fireEvent.submit(input, { target: { value: 'a' } })
-  expect(onSearchSubmitHandler).toHaveBeenCalledTimes(1)
-})
-
 it('indicates if no search results', () => {
   const { getByText } = renderComponent(defaultSearchResults)
 

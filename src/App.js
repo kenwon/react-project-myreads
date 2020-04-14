@@ -58,16 +58,9 @@ class BooksApp extends React.Component {
     const query = event.target.value
 
     this.setState(() => ({ query }))
-  }
 
-  onSearchSubmitHandler = event => {
-    event.persist()
-    event.preventDefault()
-
-    const query = this.state.query.trim()
-
-    BooksAPI.search(query).then(results => {
-      results.error
+    BooksAPI.search(query.trim()).then(results => {
+      !results || results.error
         ? this.setState(() => ({
             searchResults: [],
           }))
@@ -75,8 +68,6 @@ class BooksApp extends React.Component {
             searchResults: results,
           }))
     })
-
-    this.searchReset()
   }
 
   searchReset = () => {
@@ -114,7 +105,6 @@ class BooksApp extends React.Component {
               onCloseSearch={this.onCloseSearch}
               query={this.state.query}
               onSearchChangeHandler={this.onSearchChangeHandler}
-              onSearchSubmitHandler={this.onSearchSubmitHandler}
               searchResults={this.state.searchResults}
               shelves={this.state.shelves}
               onMenuChangeHandler={this.onMenuChangeHandler}
