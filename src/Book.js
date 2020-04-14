@@ -24,11 +24,15 @@ const Book = props => {
           />
         </div>
         <div className="book-title">{data.title}</div>
-        {data.authors.map(author => (
-          <div className="book-authors" key={author}>
-            {author}
-          </div>
-        ))}
+        {data.authors ? (
+          data.authors.map(author => (
+            <div className="book-authors" key={author}>
+              {author}
+            </div>
+          ))
+        ) : (
+          <div className="book-authors">{data.publisher}</div>
+        )}
       </div>
     </li>
   )
