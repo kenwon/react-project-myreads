@@ -32,15 +32,26 @@ class BooksApp extends React.Component {
 
     const shelf = event.target.value
 
-    this.setState(currentState => ({
-      books: currentState.books.map(item =>
-        item.id === book.id ? { ...item, shelf: shelf } : item
-      ),
-    }))
-
-    BooksAPI.update(book, shelf)
+    BooksAPI.update(book, shelf).then(this.updateBooks(book, shelf))
 
     this.redirectToMainPage()
+  }
+
+  updateBooks = (book, shelf) => {
+    this.setState(currentState => {
+      if (!currentState.books.find(item => item.id === book.id))
+        return {
+          books: currentState.books.concat([book]),
+        }
+    })
+
+    this.setState(currentState => {
+      return {
+        books: currentState.books.map(item =>
+          item.id === book.id ? { ...item, shelf: shelf } : item
+        ),
+      }
+    })
   }
 
   onSearchChangeHandler = event => {
