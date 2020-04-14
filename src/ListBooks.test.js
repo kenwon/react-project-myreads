@@ -18,8 +18,9 @@ const renderComponent = () =>
 
 test('<ListBooks /> renders bookshelves', () => {
   const { getByText } = renderComponent()
+  const displayedShelves = shelves.filter(shelf => shelf.value !== 'none')
 
-  shelves.map(shelf =>
+  displayedShelves.map(shelf =>
     expect(getByText(shelf.label, { selector: 'h2' })).toBeInTheDocument()
   )
 })
