@@ -1,6 +1,7 @@
 import React from 'react'
 import { cleanup, fireEvent, render } from '@testing-library/react'
 import SearchPage from './SearchPage'
+import books from './test/data/books-data.json'
 import shelves from './test/data/shelves-data.json'
 
 afterEach(cleanup)
@@ -18,6 +19,7 @@ const renderComponent = ({ searchResults }) =>
       onSearchChangeHandler={onSearchChangeHandler}
       onSearchSubmitHandler={onSearchSubmitHandler}
       onMenuChangeHandler={onMenuChangeHandler}
+      books={books}
       shelves={shelves}
       searchResults={searchResults}
     />

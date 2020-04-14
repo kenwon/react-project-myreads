@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import BookActionMenu from './BookActionMenu'
 
 const Book = props => {
-  const { data, shelves, onMenuChangeHandler } = props
+  const { data, books, shelves, onMenuChangeHandler } = props
   const image =
     data.imageLinks && data.imageLinks.thumbnail
       ? `url(${data.imageLinks.thumbnail})`
@@ -24,6 +24,7 @@ const Book = props => {
           ></div>
           <BookActionMenu
             book={data}
+            books={books}
             shelves={shelves}
             onChangeHandler={onMenuChangeHandler}
           />
@@ -45,6 +46,7 @@ const Book = props => {
 
 Book.propTypes = {
   data: PropTypes.object.isRequired,
+  books: PropTypes.arrayOf(Object).isRequired,
   shelves: PropTypes.arrayOf(Object).isRequired,
   onMenuChangeHandler: PropTypes.func.isRequired,
 }

@@ -106,6 +106,7 @@ class BooksApp extends React.Component {
               query={this.state.query}
               onSearchChangeHandler={this.onSearchChangeHandler}
               searchResults={this.state.searchResults}
+              books={this.state.books}
               shelves={this.state.shelves}
               onMenuChangeHandler={this.onMenuChangeHandler}
             />

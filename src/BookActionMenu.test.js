@@ -12,6 +12,7 @@ const renderComponent = () =>
   render(
     <BookActionMenu
       book={book}
+      books={books}
       shelves={shelves}
       onChangeHandler={onChangeHandler}
     />

@@ -8,7 +8,14 @@ afterEach(cleanup)
 
 const book = books[1]
 const renderComponent = book =>
-  render(<Book data={book} shelves={shelves} onMenuChangeHandler={jest.fn()} />)
+  render(
+    <Book
+      data={book}
+      books={books}
+      shelves={shelves}
+      onMenuChangeHandler={jest.fn()}
+    />
+  )
 
 test('<Book /> renders a book', () => {
   const { getByText, getByTestId } = renderComponent(book)
@@ -25,7 +32,7 @@ test('<Book /> renders a book', () => {
 it('display "Add to" menu heading if book does not belong to a shelf ', () => {
   const book = books.find(book => book.shelf === undefined)
 
-  const { getByText, getByTestId } = renderComponent(book)
+  const { getByText } = renderComponent(book)
 
   if (!book.shelf) {
     expect(getByText(/Add to/)).toBeInTheDocument()

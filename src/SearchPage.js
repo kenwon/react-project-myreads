@@ -35,6 +35,7 @@ const SearchPage = props => {
               <Book
                 key={book.id}
                 data={book}
+                books={props.books}
                 shelves={props.shelves}
                 onMenuChangeHandler={props.onMenuChangeHandler}
               />
@@ -53,6 +54,7 @@ SearchPage.propTypes = {
   query: PropTypes.string,
   onSearchChangeHandler: PropTypes.func.isRequired,
   searchResults: PropTypes.oneOfType([PropTypes.arrayOf(Object)]),
+  books: PropTypes.arrayOf(Object).isRequired,
   shelves: PropTypes.arrayOf(Object).isRequired,
   onMenuChangeHandler: PropTypes.func.isRequired,
 }

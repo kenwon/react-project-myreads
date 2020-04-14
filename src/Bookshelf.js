@@ -14,6 +14,7 @@ const Bookshelf = props => {
               <Book
                 key={book.id}
                 data={book}
+                books={books}
                 shelves={shelves}
                 onMenuChangeHandler={onMenuChangeHandler}
               />
