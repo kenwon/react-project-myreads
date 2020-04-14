@@ -20,15 +20,8 @@ const BookActionMenu = props => {
           </option>
 
           {shelves.map(shelf => {
-            // Don't display 'None' option if the book isn't on a shelf
-            if (shelf.value === 'none' && currentShelf === 'none') return null
-
             return (
-              <option
-                key={shelf.value}
-                value={shelf.value}
-                data-testid={`${book.id}-option-${shelf.value}`}
-              >
+              <option key={shelf.value} value={shelf.value}>
                 {shelf.label}
               </option>
             )

@@ -22,14 +22,12 @@ test('<Book /> renders a book', () => {
   )
 })
 
-it('does not display "none" menu option if book is not belong to a shelf ', () => {
+it('display "Add to" menu heading if book does not belong to a shelf ', () => {
   const book = books.find(book => book.shelf === undefined)
 
   const { getByText, getByTestId } = renderComponent(book)
-  const select = getByTestId(`${book.id}-action-menu`)
 
   if (!book.shelf) {
-    expect(select[4]).toBeUndefined()
     expect(getByText(/Add to/)).toBeInTheDocument()
   }
 })
