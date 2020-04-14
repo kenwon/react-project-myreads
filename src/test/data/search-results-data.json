@@ -1,0 +1,89 @@
+[
+  {
+    "title": "New Book",
+    "subtitle": "Subtitle",
+    "authors": ["A. Jeffrey Thompson"],
+    "publisher": "X Press",
+    "publishedDate": "2009-04-01",
+    "description": "Description",
+    "industryIdentifiers": [
+      { "type": "ISBN_10", "identifier": "081473216X" },
+      { "type": "ISBN_13", "identifier": "9780814732168" }
+    ],
+    "readingModes": { "text": true, "image": false },
+    "pageCount": 288,
+    "printType": "BOOK",
+    "categories": ["Fiction"],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": true,
+    "contentVersion": "",
+    "panelizationSummary": {
+      "containsEpubBubbles": false,
+      "containsImageBubbles": false
+    },
+    "language": "en",
+    "id": "2wr48i-mqjIx"
+  },
+  {
+    "title": "Learning Web Development with React and Bootstrap",
+    "authors": ["Harmeet Singh", "Mehul Bhatt"],
+    "publishedDate": "2016-12-30",
+    "description": "Build real-time responsive web apps using React and BootstrapAbout This Book* Showcase the power of React-Bootstrap through real-world examples* Explore the benefits of integrating React with various frameworks and APIs* See the benefits of using the latest frameworks to make your web development experience enchantingWho This Book Is ForThis book is for anybody who is interested in modern web development and has intermediate knowledge of HTML, CSS, and JavaScript. Basic knowledge of any JavaScript MVC framework would also be helpful.What You Will Learn* See how to integrate React-Bootstrap with React* Explore the Redux architecture and understand its benefits* Build a custom responsive theme* Easily interact with DOM on your web browser* Appreciate the advantages of using JSX* Get acquainted with the various routing methods in React* Integrate external APIs into ReactIn DetailReact-Bootstrap is one of the most popular front-end frameworks, and integrating it with React allows web developers to write much cleaner code. This book will help you gain a thorough understanding of the React-Bootstrap framework and show you how to build impressive web apps.In this book, you will get an overview of the features of React-Bootstrap and ReactJS, along with the integration of ReactJS components with ReactJS. You will understand the benefits of using JSX and the Redux architecture. The server-side rendering of React will also be shown. All the concepts are explained by developing real-world examples.By the end of this book, you will be equipped to create responsive web applications using React-Bootstrap with ReactJS, and will have an insight into the best practices.",
+    "industryIdentifiers": [
+      { "type": "ISBN_10", "identifier": "1786462494" },
+      { "type": "ISBN_13", "identifier": "9781786462497" }
+    ],
+    "readingModes": { "text": false, "image": false },
+    "pageCount": 278,
+    "printType": "BOOK",
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "preview-1.0.0",
+    "panelizationSummary": {
+      "containsEpubBubbles": false,
+      "containsImageBubbles": false
+    },
+    "imageLinks": {
+      "smallThumbnail": "http://books.google.com/books/content?id=sJf1vQAAC…J&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+      "thumbnail": "http://books.google.com/books/content?id=sJf1vQAAC…J&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.com/books?id=sJf1vQAACAAJ&dq=redux+react&hl=&cd=6&source=gbs_api",
+    "infoLink": "http://books.google.com/books?id=sJf1vQAACAAJ&dq=redux+react&hl=&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Learning_Web_Development_with_React_and.html?hl=&id=sJf1vQAACAAJ",
+    "id": "sJf1vQAACAAJ",
+    "shelf": "currentlyReading"
+  },
+  {
+    "title": "Robotics",
+    "subtitle": "State of the Art and Future Challenges",
+    "authors": ["George A. Bekey"],
+    "publisher": "Imperial College Press",
+    "publishedDate": "2008",
+    "description": "This book presents the results of an assessment of the state of robotics in Japan, South Korea, Western Europe and Australia and a comparison of robotics R&D programs in these countries with those in the United States. The comparisons include areas like robotic vehicles, space robotics, service robots, humanoid robots, networked robots, and robots for biological and medical applications, and based on criteria such as quality, scope, funding and commercialization. This important study identifies a number of areas where the traditional lead of the United States is being overtaken by developments in other countries.",
+    "industryIdentifiers": [
+      { "type": "ISBN_13", "identifier": "9781848160071" },
+      { "type": "ISBN_10", "identifier": "1848160070" }
+    ],
+    "readingModes": { "text": false, "image": true },
+    "pageCount": 152,
+    "printType": "BOOK",
+    "categories": ["Technology & Engineering"],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "preview-1.0.0",
+    "panelizationSummary": {
+      "containsEpubBubbles": false,
+      "containsImageBubbles": false
+    },
+    "imageLinks": {
+      "smallThumbnail": "http://books.google.com/books/content?id=7n2gw9MbTMUC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+      "thumbnail": "http://books.google.com/books/content?id=7n2gw9MbTMUC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.com/books?id=7n2gw9MbTMUC&printsec=frontcover&dq=robotics&hl=&cd=1&source=gbs_api",
+    "infoLink": "http://books.google.com/books?id=7n2gw9MbTMUC&dq=robotics&hl=&source=gbs_api",
+    "canonicalVolumeLink": "https://books.google.com/books/about/Robotics.html?hl=&id=7n2gw9MbTMUC",
+    "id": "7n2gw9MbTMUC"
+  }
+]
