@@ -18,7 +18,7 @@ const SearchPage = props => {
                   However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                   you don't find a specific author or title. Every search is limited by search terms.
                 */}
-          <form>
+          <form onSubmit={event => event.preventDefault()}>
             <input
               type="text"
               placeholder="Search by title or author"
