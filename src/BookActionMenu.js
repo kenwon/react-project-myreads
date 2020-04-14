@@ -16,7 +16,7 @@ const BookActionMenu = props => {
           data-testid={`${book.id}-action-menu`}
         >
           <option value="move" disabled>
-            Move to...
+            {currentShelf === 'none' ? 'Add to...' : 'Move to...'}
           </option>
 
           {shelves.map(shelf => {
