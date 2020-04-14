@@ -30,16 +30,18 @@ const SearchPage = props => {
       </div>
       <div className="search-books-results">
         <ol className="books-grid">
-          {props.searchResults
-            ? props.searchResults.map(book => (
-                <Book
-                  key={book.id}
-                  data={book}
-                  shelves={props.shelves}
-                  onMenuChangeHandler={props.onMenuChangeHandler}
-                />
-              ))
-            : ''}
+          {props.searchResults && props.searchResults.length > 0 ? (
+            props.searchResults.map(book => (
+              <Book
+                key={book.id}
+                data={book}
+                shelves={props.shelves}
+                onMenuChangeHandler={props.onMenuChangeHandler}
+              />
+            ))
+          ) : (
+            <li>No results</li>
+          )}
         </ol>
       </div>
     </div>
@@ -51,10 +53,7 @@ SearchPage.propTypes = {
   query: PropTypes.string,
   onSearchChangeHandler: PropTypes.func.isRequired,
   onSearchSubmitHandler: PropTypes.func.isRequired,
-  searchResults: PropTypes.oneOfType([
-    PropTypes.arrayOf(Object),
-    PropTypes.object,
-  ]),
+  searchResults: PropTypes.oneOfType([PropTypes.arrayOf(Object)]),
   shelves: PropTypes.arrayOf(Object).isRequired,
   onMenuChangeHandler: PropTypes.func.isRequired,
 }

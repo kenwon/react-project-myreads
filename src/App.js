@@ -60,13 +60,17 @@ class BooksApp extends React.Component {
   onSearchSubmitHandler = event => {
     event.persist()
     event.preventDefault()
-    console.log(event)
+
     const query = this.state.query.trim()
 
     BooksAPI.search(query).then(results => {
-      this.setState(() => ({
-        searchResults: results,
-      }))
+      results.error
+        ? this.setState(() => ({
+            searchResults: [],
+          }))
+        : this.setState(() => ({
+            searchResults: results,
+          }))
     })
 
     this.searchReset()

@@ -9,7 +9,8 @@ const onCloseSearch = jest.fn()
 const onSearchChangeHandler = jest.fn()
 const onSearchSubmitHandler = jest.fn()
 const onMenuChangeHandler = jest.fn()
-const renderComponent = () =>
+const defaultSearchResults = []
+const renderComponent = ({ searchResults }) =>
   render(
     <SearchPage
       onCloseSearch={onCloseSearch}
@@ -18,11 +19,14 @@ const renderComponent = () =>
       onSearchSubmitHandler={onSearchSubmitHandler}
       onMenuChangeHandler={onMenuChangeHandler}
       shelves={shelves}
+      searchResults={searchResults}
     />
   )
 
 test('<SearchPage /> renders search bar', () => {
-  const { getByText, getByPlaceholderText } = renderComponent()
+  const { getByText, getByPlaceholderText } = renderComponent(
+    defaultSearchResults
+  )
   const input = getByPlaceholderText(/Search by title or author/i)
   const closeButton = getByText(/close/i)
 
@@ -31,7 +35,7 @@ test('<SearchPage /> renders search bar', () => {
 })
 
 it('calls "onCloseSearch" prop on click', () => {
-  const { getByText } = renderComponent()
+  const { getByText } = renderComponent(defaultSearchResults)
   const closeButton = getByText(/close/i)
 
   fireEvent.click(closeButton)
@@ -39,7 +43,7 @@ it('calls "onCloseSearch" prop on click', () => {
 })
 
 it('calls "onSearchChangeHandler" prop on search input', () => {
-  const { getByPlaceholderText } = renderComponent()
+  const { getByPlaceholderText } = renderComponent(defaultSearchResults)
   const input = getByPlaceholderText(/Search by title or author/i)
 
   fireEvent.change(input, { target: { value: 'a' } })
@@ -47,9 +51,15 @@ it('calls "onSearchChangeHandler" prop on search input', () => {
 })
 
 it('calls "onSearchSubmitHandler" prop on search submit', () => {
-  const { getByPlaceholderText } = renderComponent()
+  const { getByPlaceholderText } = renderComponent(defaultSearchResults)
   const input = getByPlaceholderText(/Search by title or author/i)
 
   fireEvent.submit(input, { target: { value: 'a' } })
   expect(onSearchSubmitHandler).toHaveBeenCalledTimes(1)
+})
+
+it('indicates if no search results', () => {
+  const { getByText } = renderComponent(defaultSearchResults)
+
+  expect(getByText(/no results/i)).toBeInTheDocument()
 })
