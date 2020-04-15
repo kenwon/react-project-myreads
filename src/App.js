@@ -7,6 +7,7 @@ import ListBooks from './ListBooks'
 
 class BooksApp extends React.Component {
   state = {
+    title: 'MyReads',
     query: '',
     books: [],
     shelves: [
@@ -83,6 +84,8 @@ class BooksApp extends React.Component {
   }
 
   componentDidMount() {
+    document.title = this.state.title
+
     BooksAPI.getAll().then(books =>
       this.setState(() => ({
         books: books,
